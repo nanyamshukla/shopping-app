@@ -8,7 +8,6 @@ import { auth } from '../../Firebase/firebase.utils';
 
 
 const Header = ({ currentUser }) => {
-    console.log('currentUser:', currentUser);
     return (
         <div className='header'>
             <Link className='logo-container' to='/'>
