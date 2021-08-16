@@ -7,24 +7,26 @@ import { auth } from '../../Firebase/firebase.utils';
 
 
 
-const Header = ({ currentUser }) => (
-    <div className='header'>
-        <Link className='logo-container' to='/'>
-            <Logo className='logo' />
-        </Link>
+const Header = ({ currentUser }) => {
+    console.log('currentUser:', currentUser);
+    return (
+        <div className='header'>
+            <Link className='logo-container' to='/'>
+                <Logo className='logo' />
+            </Link>
 
-        <div className='options'>
-            <Link className='option' to='/' >HOME</Link>
-            <Link className='option' to='/shop' >SHOP</Link>
-            <Link className='option' to='/shop' >CONTACT</Link>
-            {
-                currentUser 
-                ? <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
-                : <Link className="option" to='/login' >SIGN IN</Link>
-            }
+            <div className='options'>
+                <Link className='option' to='/' >HOME</Link>
+                <Link className='option' to='/shop' >SHOP</Link>
+                <Link className='option' to='/shop' >CONTACT</Link>
+                {
+                    currentUser 
+                    ? <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
+                    : <Link className="option" to='/login' >SIGN IN</Link>
+                }
 
+            </div>
         </div>
-    </div>
-)
-
+    )
+}
 export default Header;
