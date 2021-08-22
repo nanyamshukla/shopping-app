@@ -15,3 +15,17 @@ export const selectCartItemsCount = createSelector(
         ,0
     )
 );
+
+export const selectCartTotalPrice = createSelector(
+    [selectCartItems],
+    cartItems => cartItems.reduce(
+        (accumulatedQuamtity, cartItem) => 
+            accumulatedQuamtity + cartItem.quantity*cartItem.price
+        ,0
+    )
+);
+
+export const selectHideCartDropdown = createSelector(
+    [selectCart],
+    cart => cart.hideCartDropdown
+);

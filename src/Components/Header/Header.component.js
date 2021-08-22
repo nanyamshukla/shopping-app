@@ -7,7 +7,8 @@ import { ReactComponent as Logo } from '../../Assets/crown.svg'
 import { auth } from '../../Firebase/firebase.utils';
 import CartIcon from '../CartIcon/CartIcon.component';
 import CartDropdown from '../CartDropdown/CartDropdown.component';
-
+import { selectCurrentUser } from '../../Redux/User/user.selector';
+import { selectHideCartDropdown } from '../../Redux/Cart/cart.selectors';
 
 
 const Header = ({ currentUser, hideCartDropdown }) => {
@@ -34,8 +35,8 @@ const Header = ({ currentUser, hideCartDropdown }) => {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.user.currentUser,
-    hideCartDropdown: state.cart.hideCartDropdown 
+    currentUser: selectCurrentUser(state),
+    hideCartDropdown: selectHideCartDropdown(state)
 })
 
 export default connect(mapStateToProps)(Header);
